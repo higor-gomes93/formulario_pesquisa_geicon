@@ -1,16 +1,7 @@
 {
-  "timeZone": "America/New_York",
+  "timeZone": "America/Sao_Paulo",
   "dependencies": {
   },
   "exceptionLogging": "STACKDRIVER",
-  "runtimeVersion": "V8",
-  "sheets": {
-    "macros": [{
-      "menuName": "geradorFormularios",
-      "functionName": "geradorFormularios"
-    }, {
-      "menuName": "sendEmails",
-      "functionName": "sendEmails"
-    }]
-  }
+  "runtimeVersion": "V8"
 }
