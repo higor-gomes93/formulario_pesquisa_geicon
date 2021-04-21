@@ -3,5 +3,17 @@
   "dependencies": {
   },
   "exceptionLogging": "STACKDRIVER",
-  "runtimeVersion": "V8"
+  "runtimeVersion": "V8",
+  "sheets": {
+    "macros": [{
+      "menuName": "coletorRespostas",
+      "functionName": "coletorRespostas"
+    }, {
+      "menuName": "doGet",
+      "functionName": "doGet"
+    }, {
+      "menuName": "printGrafo",
+      "functionName": "printGrafo"
+    }]
+  }
 }
