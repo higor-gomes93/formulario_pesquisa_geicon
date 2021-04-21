@@ -30,20 +30,8 @@
           container: document.getElementById('cy'), // container to render in
 
           elements: data,
-          
-          /*[ // list of graph elements to start with
-            { // node a
-              data: { id: 'a' }
-            },
-            { // node b
-              data: { id: 'b' }
-            },
-            { // edge ab
-              data: { id: 'ab', source: 'a', target: 'b' }
-            }
-          ],*/
 
-          style: [ // the stylesheet for the graph
+          style: [
             {
               selector: 'node',
               style: {
@@ -66,10 +54,19 @@
 
           layout: {
             name: 'preset',
+            padding: 0,
+            fit: true,
             rows: 1
           }
-
         });
+
+        
+        cy.pan({
+          x: 0,
+          y: 0
+        });
+
+        cy.reset();
       }
 
       
