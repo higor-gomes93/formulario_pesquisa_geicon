@@ -12,7 +12,7 @@ function pegador(){
   var posYConceitoEfeito = SpreadsheetApp.getActive().getSheetByName("Dataset_Filtrado").getRange(1, 6, 5, 1).getValues();
 
   for(let i = 0; i < 5; i++){
-    let nodeCC = { data: { id: conceitoCausa[i][0] }, position: { x: parseInt(posXConceitoCausa[i][0]), y: parseInt(posYConceitoCausa[i][0]) }, style: {'background-color': 'red'}};
+    let nodeCC = { data: { id: conceitoCausa[i][0] }, position: { x: parseInt(posXConceitoCausa[i][0]), y: parseInt(posYConceitoCausa[i][0]) } };
     let nodeCE = { data: { id: conceitoEfeito[i][0] }, position: { x: parseInt(posXConceitoEfeito[i][0]), y: parseInt(posYConceitoEfeito[i][0]) } }
     let edge = { data: { id: i, source: conceitoCausa[i][0], target: conceitoEfeito[i][0]} };
     elements.push(nodeCC);
