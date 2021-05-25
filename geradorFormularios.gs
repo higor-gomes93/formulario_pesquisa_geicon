@@ -11,7 +11,7 @@ function geradorFormularios() {
   for(let i = 3; i <= linhas; i++){
     let formulario_pessoal = DriveApp.getFileById("18bBvISV9pC4UnSnzUDSSb88XwuIySm6O7X9gynkfx8c").makeCopy().moveTo(formularios);
     formulario_pessoal.setName("Formulário - "+planilha_controle.getSheetByName("Envio de E-mails").getRange(i, 1).getValue());
-    SpreadsheetApp.open(formulario_pessoal).getSheetByName("Tabelas Auxiliares").getRange(1, 32).setValue(planilha_controle.getSheetByName("Envio de E-mails").getRange(i, 1).getValue())
+    SpreadsheetApp.open(formulario_pessoal).getSheetByName("Tabelas Auxiliares").getRange(1, 21).setValue(planilha_controle.getSheetByName("Envio de E-mails").getRange(i, 1).getValue())
     planilha_controle.getSheetByName("Envio de E-mails").getRange(i, 4).setValue(formulario_pessoal.getUrl());
   }
 

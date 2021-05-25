@@ -19,7 +19,7 @@ function salvarRespostas() {
   const pergunta5 = formulario.getRange(13, 4);
 
   // Encontrando a porcentagem atual
-  const log = auxiliares.getRange(1, 29).getValue();
+  const log = auxiliares.getRange(1, 18).getValue();
   const novoLog = log+2;
 
   // Finalizando se já estiver concluído
