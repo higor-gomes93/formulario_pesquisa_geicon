@@ -76,26 +76,3 @@ function transformacaoOcupacao() {
     extendedDataset.getRange(lastrow, 2, 207, 1).setValues(answers);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
