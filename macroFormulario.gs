@@ -105,7 +105,7 @@ function salvarRespostas() {
     formulario.getRange(16, 18+novoLog).setValue(novoLog+"0%").setFontColor("#666666");
   }
   // Em Tabelas Auxiliares
-  auxiliares.getRange(1, 29).setValue(novoLog);
+  auxiliares.getRange(1, 18).setValue(novoLog);
 
   // Preparando para a rodada final
   if(novoLog == 8){
