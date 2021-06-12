@@ -1,6 +1,5 @@
 function geradorFormularios() {
   // Definindo as planilhas e as pastas
-  const forms_base = SpreadsheetApp.openById("18bBvISV9pC4UnSnzUDSSb88XwuIySm6O7X9gynkfx8c");
   const planilha_controle = SpreadsheetApp.openById("1GrJuxWZ3cqFveAGZ7rnqqI2KGgW0Ubb_l736pUAg7Oc");
   const formularios = DriveApp.getFolderById("1GUrCWml7td6lHr8v9C-tq0jOaS7TUbt0");
 
