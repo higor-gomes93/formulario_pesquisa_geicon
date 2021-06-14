@@ -1,7 +1,7 @@
 function geradorFormularios() {
   // Definindo as planilhas e as pastas
-  const planilha_controle = SpreadsheetApp.openById("1GrJuxWZ3cqFveAGZ7rnqqI2KGgW0Ubb_l736pUAg7Oc");
-  const formularios = DriveApp.getFolderById("1GUrCWml7td6lHr8v9C-tq0jOaS7TUbt0");
+  const planilha_controle = SpreadsheetApp.openById("1GrJuxWZ3cqFveAGZ7rnqqI2KGgW0Ubb_l736pUAg7Oc");  // Planilha para envio de e-mails e geração de formulários
+  const formularios = DriveApp.getFolderById("1GUrCWml7td6lHr8v9C-tq0jOaS7TUbt0");  // Pasta contendo todos os formulários
 
   // Validar se existe algum dado
 
