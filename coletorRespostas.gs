@@ -53,6 +53,7 @@ function coletorDados(fileId) {
 function coletorNomes(fileId) {
   // Coletando o nome da planilha
   const rawName = DriveApp.getFileById(fileId).getName().toString();
+  // Criando o nome do aluno
   const name = rawName.split(" - ")[1];
   const listNames = [name, name, name, name, name];
 
@@ -75,6 +76,7 @@ function registroDados(data, names) {
   mainSheet.getRange(mainstartRow+1, mainstartColumn, mainendRow, 1).setValue(names);
 }
 
+// Rodando as funções
 function coletorRespostas() {
   const folders = coletorPastas();
 
