@@ -48,7 +48,7 @@ function salvarRespostas() {
     ];
   }
   
-  // PROMOÇÃO
+  
   // Criando o texto
   const texto = elementos.join('\n');
 
