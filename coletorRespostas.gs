@@ -21,9 +21,9 @@ function coletorArquivos(folderId) {
   const folder = DriveApp.getFolderById(folderId);
   const fileterator = folder.getFiles();
   let fileCheck = fileterator.hasNext();
-  const files = new Array();
+  const files = new Array();  // Array com as respostas de determinada turma
 
-  // Coletando todas as subpastas com as respostas
+  // Coletando todos os formulários com as respostas
   while (fileCheck == true){
     let fileId = fileterator.next().getId().toString();
     files.push(fileId);
