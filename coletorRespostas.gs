@@ -1,9 +1,9 @@
 function coletorPastas() {
   // Definindo a pasta de respostas
-  const folder = DriveApp.getFolderById("1UWh2jsB0_lxkovCbETolUhN3dYETDQ3I");
+  const folder = DriveApp.getFolderById("1UWh2jsB0_lxkovCbETolUhN3dYETDQ3I");  // Pasta central de respostas
   const folderIterator = folder.getFolders();
   let folderCheck = folderIterator.hasNext();
-  const folders = new Array();
+  const folders = new Array();  // Array com as pastas de cada turma
 
   // Coletando todas as subpastas com as respostas
   while (folderCheck == true){
