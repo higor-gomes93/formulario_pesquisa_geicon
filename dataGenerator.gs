@@ -3,6 +3,7 @@ function doGet() {
 }
 
 function pegador(){
+  // Vetor de dados
   var elements = [];
   var conceitoCausa = SpreadsheetApp.getActive().getSheetByName("Dataset_Filtrado").getRange(1, 2, 5, 1).getValues();
   var conceitoEfeito = SpreadsheetApp.getActive().getSheetByName("Dataset_Filtrado").getRange(1, 3, 5, 1).getValues();
