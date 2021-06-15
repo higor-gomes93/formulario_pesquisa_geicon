@@ -78,11 +78,14 @@ function registroDados(data, names) {
 
 // Rodando as funções
 function coletorRespostas() {
+  // Coletando as pastas
   const folders = coletorPastas();
 
   for (let i in folders) {
+    // Coletando os formularios
     files = coletorArquivos(folders[i]);
     for (let j in files) {
+      // Coletando os dados
       dados = coletorDados(files[j]);
       nome = coletorNomes(files[j]);
       registroDados(dados, nome);
