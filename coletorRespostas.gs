@@ -87,7 +87,9 @@ function coletorRespostas() {
     for (let j in files) {
       // Coletando os dados
       dados = coletorDados(files[j]);
+      // Coletando os nomes
       nome = coletorNomes(files[j]);
+      // Registrando os dados
       registroDados(dados, nome);
     }
   }
