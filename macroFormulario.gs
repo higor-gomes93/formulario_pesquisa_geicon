@@ -112,8 +112,6 @@ function salvarRespostas() {
     formulario.deleteRow(13);
   } else if(novoLog == 10){
     formulario.getRange(9, 29).setValue("Finalizado!").setFontColor("white");
-    auxiliares.getRange(3, 21).setValue("Finalizado!");
-    
   }
 
   // Imprimindo alerta
