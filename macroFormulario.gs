@@ -111,7 +111,7 @@ function salvarRespostas() {
   if(novoLog == 8){
     formulario.deleteRow(13);
   } else if(novoLog == 10){
-    formulario.getRange(9, 29).setValue("Finalizado!").setFontColor("white");
+    auxiliares.getRange(3, 2).setValue("Finalizado!");
   }
 
   // Imprimindo alerta
@@ -120,4 +120,26 @@ function salvarRespostas() {
   } else if(log == 8){
     SpreadsheetApp.getUi().alert("Respostas salvas!", "Formulário concluído.", SpreadsheetApp.getUi().ButtonSet.OK);
   }
+}
+
+
+function rodadaExtra() {
+  // Definindo as abas
+  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário 1");
+  const auxiliares = SpreadsheetApp.getActive().getSheetByName("Tabelas Auxiliares");
+  const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
+
+  // Criando o novo campo
+  formulario.insertRowBefore(9);
+  formulario.getRange(9, 3, 1, 26).merge()
+  formulario.getRange(10, 3, 1, 26).copyFormatToRange(formulario.getRange(9, 3, 1, 26).getGridId(), 3, 28, 9, 9)
+  formulario.getRange(10, 29, 1, 14).copyFormatToRange(formulario.getRange(9, 29, 1, 14).getGridId(), 29, 42, 9, 9);
+
+  // Criando a lista
+  const conceitosEfeito = auxiliares.getRange(4, 18, 5, 1);
+  formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(conceitosEfeito).setAllowInvalid(false).build());
+
+  // Limpando o log
+  formulario.getRange(10, 29).clearContent();
+
 }
