@@ -131,15 +131,41 @@ function rodadaExtra() {
 
   // Criando o novo campo
   formulario.insertRowBefore(9);
-  formulario.getRange(9, 3, 1, 26).merge()
-  formulario.getRange(10, 3, 1, 26).copyFormatToRange(formulario.getRange(9, 3, 1, 26).getGridId(), 3, 28, 9, 9)
+  formulario.getRange(9, 3, 1, 26).merge();
+  formulario.getRange(10, 3, 1, 26).copyFormatToRange(formulario.getRange(9, 3, 1, 26).getGridId(), 3, 28, 9, 9);
   formulario.getRange(10, 29, 1, 14).copyFormatToRange(formulario.getRange(9, 29, 1, 14).getGridId(), 29, 42, 9, 9);
 
-  // Criando a lista
+  // Criando a lista interface
   const conceitosEfeito = auxiliares.getRange(4, 18, 5, 1);
+  const conceitosCausa = auxiliares.getRange(4, 20, 5, 1);
   formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(conceitosEfeito).setAllowInvalid(false).build());
+  auxiliares.getRange(4, 20).setFormula("=FILTER(Q4:Q;R4:R<>'Formulário 1'!AC9)");
+  formulario.getRange(10, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(conceitosCausa).setAllowInvalid(false).build());
+  formulario.getRange(11, 29, 1, 14).copyFormatToRange(formulario.getRange(10, 29, 1, 14).getGridId(), 29, 42, 10, 10);
+  const formula = auxiliares.getRange(4, 21).getFormula();
+  formulario.getRange(10, 4).setFormula(formula);
 
-  // Limpando o log
-  formulario.getRange(10, 29).clearContent();
-
+  // Arrumando as categorias
+  auxiliares.getRange(3, 2).clearContent();
+  auxiliares.getRange(2, 2).setFormula("='Formulário 1'!AC9");
+  auxiliares.getRange(3, 2).setFormula("='Formulário 1'!AC10");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
