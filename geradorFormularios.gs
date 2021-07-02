@@ -18,6 +18,6 @@ function geradorFormularios() {
   planilha_controle.getSheetByName("Envio de E-mails").getRange(3, 6).autoFill(planilha_controle.getSheetByName("Envio de E-mails").getRange(3, 6, linhas-2, 1), SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
   planilha_controle.getSheetByName("Envio de E-mails").getRange(3, 7).autoFill(planilha_controle.getSheetByName("Envio de E-mails").getRange(3, 7, linhas-2, 1), SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
 
-  // Alerta
+  // Alerta na interface
   SpreadsheetApp.getUi().alert("Ferramenta configurada.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
