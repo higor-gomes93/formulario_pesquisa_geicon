@@ -139,7 +139,7 @@ function rodadaExtra() {
   const conceitosEfeito = auxiliares.getRange(4, 18, 5, 1);
   const conceitosCausa = auxiliares.getRange(4, 20, 5, 1);
   formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(conceitosEfeito).setAllowInvalid(false).build());
-  auxiliares.getRange(4, 20).setFormula("=FILTER(Q4:Q;R4:R<>'Formulário 1'!AC9)");
+  auxiliares.getRange(4, 20).setFormula("=FILTER(Q4:Q;R4:R<>'Formulário'!AC9)");
   formulario.getRange(10, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(conceitosCausa).setAllowInvalid(false).build());
   formulario.getRange(11, 29, 1, 14).copyFormatToRange(formulario.getRange(10, 29, 1, 14).getGridId(), 29, 42, 10, 10);
   const formula = auxiliares.getRange(4, 21).getFormula();
@@ -147,8 +147,8 @@ function rodadaExtra() {
 
   // Arrumando as categorias
   auxiliares.getRange(3, 2).clearContent();
-  auxiliares.getRange(2, 2).setFormula("='Formulário 1'!AC9");
-  auxiliares.getRange(3, 2).setFormula("='Formulário 1'!AC10");
+  auxiliares.getRange(2, 2).setFormula("='Formulário'!AC9");
+  auxiliares.getRange(3, 2).setFormula("='Formulário'!AC10");
 }
 
 
