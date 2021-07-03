@@ -153,6 +153,23 @@ function rodadaExtra() {
 
 
 
+function enviarFormulario(){
+  
+}
+
+function macro() {
+  const tipo = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
+  console.log(tipo);
+
+  // Rodando a função
+  if (tipo == "Salvar Respostas"){
+    salvarRespostas();
+  } else if (tipo == "Rodada Extra"){
+    rodadaExtra();
+  } else if (tipo == "Enviar Formulário"){
+    enviarFormulario();
+  }
+}
 
 
 
