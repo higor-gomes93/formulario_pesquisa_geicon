@@ -169,11 +169,12 @@ function macro() {
     salvarRespostas();
   } else if (tipo1 == "Rodada Extra" || tipo2 == "Rodada Extra"){
     rodadaExtra();
+  } else if (tipo1 == "Salvar Resposta" || tipo2 == "Salvar Resposta"){
+    salvarResposta();
   } else if (tipo1 == "Enviar Formulário" || tipo2 == "Enviar Formulário"){
     enviarFormulario();
   }
 }
-
 
 
 
