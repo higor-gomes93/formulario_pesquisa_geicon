@@ -160,7 +160,6 @@ function enviarFormulario(){
 function macro() {
   const tipo1 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
   const tipo2 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(16, 3).getValue();
-  console.log(tipo);
 
   // Rodando a função
   if (tipo1 == "Salvar Respostas" || tipo2 == "Salvar Respostas"){
