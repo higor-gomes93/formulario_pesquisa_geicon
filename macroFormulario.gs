@@ -125,7 +125,7 @@ function salvarRespostas() {
 
 function rodadaExtra() {
   // Definindo as abas
-  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário 1");
+  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Tabelas Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
 
