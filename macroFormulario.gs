@@ -158,15 +158,16 @@ function enviarFormulario(){
 }
 
 function macro() {
-  const tipo = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
+  const tipo1 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
+  const tipo2 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(16, 3).getValue();
   console.log(tipo);
 
   // Rodando a função
-  if (tipo == "Salvar Respostas"){
+  if (tipo1 == "Salvar Respostas" || tipo2 == "Salvar Respostas"){
     salvarRespostas();
-  } else if (tipo == "Rodada Extra"){
+  } else if (tipo1 == "Rodada Extra" || tipo2 == "Rodada Extra"){
     rodadaExtra();
-  } else if (tipo == "Enviar Formulário"){
+  } else if (tipo1 == "Enviar Formulário" || tipo2 == "Enviar Formulário"){
     enviarFormulario();
   }
 }
