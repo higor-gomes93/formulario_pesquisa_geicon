@@ -149,13 +149,16 @@ function rodadaExtra() {
   auxiliares.getRange(3, 2).clearContent();
   auxiliares.getRange(2, 2).setFormula("='Formulário'!AC9");
   auxiliares.getRange(3, 2).setFormula("='Formulário'!AC10");
+
+  // Adicionando o texto
+  formulario.getRange(9, 3).setValue("-").setFontColor("black");
+  formulario.getRange(9, 4).setValue("Escolha o conceito efeito mais significativo para justificar a questão focal.").setFontColor("black");
 }
-
-
 
 function enviarFormulario(){
   
 }
+
 
 function macro() {
   const tipo1 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
