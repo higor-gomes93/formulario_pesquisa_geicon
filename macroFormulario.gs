@@ -211,6 +211,14 @@ function salvarResposta() {
 
   // Inserindo o log final
   formulario.getRange(16, 3).setValue("Enviar Formulário");
+
+  // Apagando as linhas
+  formulario.deleteRow(9);
+  formulario.getRange(9, 29).clearContent();
+  formulario.getRange(10, 29).clearContent();
+  formulario.getRange(11, 29).clearContent();
+  formulario.getRange(12, 29).clearContent();
+
 }
 
 
