@@ -203,13 +203,14 @@ function salvarResposta() {
   }
 
   // Inserindo os valores
-  conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
+  conceitoCausaDestino.setValue(conceitoCausaOrigem.getDisplayValue());
   conceitoEfeitoDestino.setValue(conceitoEfeitoOrigem.getValue());
   camadaUmDestino.setValue(camadaUmOrigem.getValue());
   camadaDoisDestino.setValue(camadaDoisOrigem.getValue());
   camadaTresDestino.setValue(camadaTresOrigem.getValue());
-  novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
 
+  // Inserindo o log final
+  formulario.getRange(16, 3).setValue("Enviar Formulário");
 }
 
 
