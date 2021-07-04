@@ -213,7 +213,8 @@ function salvarResposta() {
   formulario.getRange(16, 3).setValue("Enviar Formulário");
 
   // Apagando as linhas
-  formulario.getRange(9, 29).setValue("Rodada Extra Concluída").setFontColor("#999999");
+  formulario.getRange(9, 3).setValue("Rodada Extra Concluída").setFontColor("#999999");
+  formulario.getRange(9, 29).clearContent();
   formulario.getRange(10, 29).clearContent();
   formulario.getRange(11, 29).clearContent();
   formulario.getRange(12, 29).clearContent();
