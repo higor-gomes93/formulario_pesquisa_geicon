@@ -151,8 +151,9 @@ function rodadaExtra() {
   auxiliares.getRange(3, 2).setFormula("='Formulário'!AC10");
 
   // Adicionando o texto
-  formulario.getRange(9, 3).setValue("-").clearFormat().setFontColor("black");
-  formulario.getRange(9, 4).setValue("Escolha o conceito efeito mais significativo para justificar a questão focal.").clearFormat().setFontColor("black");
+  formulario.getRange(9, 3, 1, 26).merge();
+  formulario.getRange(9, 3).clearFormat().setValue(" Escolha o conceito efeito mais significativo para justificar a questão focal.").setFontColor("black");
+  formulario.getRange(9, 3, 1, 26).setBorder(true, true, true, true, false, false, '#b7b7b7', SpreadsheetApp.BorderStyle.SOLID);
   formulario.getRange(16, 3).setValue("Salvar Resposta");
 }
 
