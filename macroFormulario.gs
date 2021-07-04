@@ -157,6 +157,62 @@ function rodadaExtra() {
   formulario.getRange(16, 3).setValue("Salvar Resposta");
 }
 
+
+function salvarResposta() {
+  // Definindo as abas
+  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
+  const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
+
+  // Definindo as variáveis origem
+  const conceitoCausaOrigem = formulario.getRange(10, 29);
+  const conceitoEfeitoOrigem = formulario.getRange(9, 29);
+  const camadaUmOrigem = formulario.getRange(11, 29);
+  const camadaDoisOrigem = formulario.getRange(12, 29);
+  const camadaTresOrigem = formulario.getRange(13, 29);
+  const pergunta1 = formulario.getRange(10, 4);
+  const pergunta2 = formulario.getRange(11, 4);
+  const pergunta3 = formulario.getRange(12, 4);
+  const pergunta4 = formulario.getRange(13, 4);
+
+  // Encontrando a última linha na aba Respostas
+  const linha1 = respostas.getRange(1, 14).getValue();
+
+  // Definindo as variáveis destino
+  const conceitoCausaDestino = respostas.getRange(linha1, 2);
+  const conceitoEfeitoDestino = respostas.getRange(linha1, 3);
+  const camadaUmDestino = respostas.getRange(linha1, 4);
+  const camadaDoisDestino = respostas.getRange(linha1, 5);
+  const camadaTresDestino = respostas.getRange(linha1, 6);
+
+  let elementos = [
+    pergunta1.getValue() + ' - ' + conceitoCausaOrigem.getValue() + '\n',
+    pergunta2.getValue() + ' - ' + camadaUmOrigem.getValue() + '\n',
+    pergunta3.getValue() + ' - ' + camadaDoisOrigem.getValue() + '\n',
+    pergunta4.getValue() + ' - ' + camadaTresOrigem.getValue() + '\n',
+  ];
+
+  // Criando o texto
+  const texto = elementos.join('\n');
+
+  // UI
+  const resposta = SpreadsheetApp.getUi().alert("Confira suas respostas.", texto, SpreadsheetApp.getUi().ButtonSet.OK_CANCEL);
+
+  if(resposta == SpreadsheetApp.getUi().Button.CANCEL){
+    SpreadsheetApp.getUi().alert("Cancelado! Repita o processo.", SpreadsheetApp.getUi().ButtonSet.OK);
+    return
+  }
+
+  // Inserindo os valores
+  conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
+  conceitoEfeitoDestino.setValue(conceitoEfeitoOrigem.getValue());
+  camadaUmDestino.setValue(camadaUmOrigem.getValue());
+  camadaDoisDestino.setValue(camadaDoisOrigem.getValue());
+  camadaTresDestino.setValue(camadaTresOrigem.getValue());
+  novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
+
+}
+
+
 function enviarFormulario(){
   
 }
