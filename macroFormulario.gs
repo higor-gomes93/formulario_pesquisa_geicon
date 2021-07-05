@@ -122,7 +122,6 @@ function salvarRespostas() {
   }
 }
 
-
 function rodadaExtra() {
   // Definindo as abas
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
@@ -155,8 +154,10 @@ function rodadaExtra() {
   formulario.getRange(9, 3).clearFormat().setValue(" Escolha o conceito efeito mais significativo para justificar a questão focal.").setFontColor("black");
   formulario.getRange(9, 3, 1, 26).setBorder(true, true, true, true, false, false, '#b7b7b7', SpreadsheetApp.BorderStyle.SOLID);
   formulario.getRange(16, 3).setValue("Salvar Resposta");
-}
 
+  // Setando a questão focal
+  formulario.getRange(6, 3).setValue("Questão focal: Como ocorre o(a) o desejo de vencer no contexto do desenvolvimento acadêmico que muda o padrão de da interação de você - aluno - com a sociedade?");
+}
 
 function salvarResposta() {
   // Definindo as abas
@@ -222,11 +223,8 @@ function salvarResposta() {
 
 }
 
-
-function enviarFormulario(){
-  
+function enviarFormulario(){ 
 }
-
 
 function macro() {
   const tipo1 = SpreadsheetApp.getActive().getSheetByName("Formulário").getRange(15, 3).getValue();
@@ -243,18 +241,3 @@ function macro() {
     enviarFormulario();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
