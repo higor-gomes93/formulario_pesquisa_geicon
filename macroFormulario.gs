@@ -223,7 +223,16 @@ function salvarResposta() {
 
 }
 
-function enviarFormulario(){ 
+function enviarFormulario(){
+  // Definindo as abas
+  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
+  
+  // Inserindo o log
+  formulario.getRange(16, 3).setValue("Obrigado!");
+
+  // Limpando as células
+  formulario.deleteRows(8, 6);
+  SpreadsheetApp.getUi().alert("Concluído!", "Formulário finalizado com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
 
 function macro() {
