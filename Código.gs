@@ -75,6 +75,7 @@ function salvarRespostas() {
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
   
+  // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
 
