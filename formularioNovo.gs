@@ -41,7 +41,7 @@ function salvarRespostas() {
   }
 
   // Encontrando a última linha na aba Respostas
-  const linha1 = respostas.getRange(1, 14).getValue();
+  const linha1 = respostas.getRange(1, 15).getValue();
 
   // Definindo as variáveis destino
   const conceitoCausaDestino = respostas.getRange(linha1, 2);
