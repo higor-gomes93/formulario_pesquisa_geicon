@@ -17,6 +17,7 @@ function salvarRespostas() {
   const pergunta3 = formulario.getRange(11, 4);
   const pergunta4 = formulario.getRange(12, 4);
   const pergunta5 = formulario.getRange(13, 4);
+  const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
 
   // Conferindo as respostas
   // Criando os elementos do texto
@@ -41,7 +42,7 @@ function salvarRespostas() {
   }
 
   // Encontrando a última linha na aba Respostas
-  const linha1 = respostas.getRange(1, 14).getValue();
+  const linha1 = respostas.getRange(1, 15).getValue();
 
   // Definindo as variáveis destino
   const conceitoCausaDestino = respostas.getRange(linha1, 2);
@@ -49,6 +50,7 @@ function salvarRespostas() {
   const camadaUmDestino = respostas.getRange(linha1, 4);
   const camadaDoisDestino = respostas.getRange(linha1, 5);
   const camadaTresDestino = respostas.getRange(linha1, 6);
+  const dataColeta = resposta.getRange(linha1, 13);
   const novoConceitoEfeitoDestino = auxiliares.getRange(2, 2);
   
   // Inserindo os valores
@@ -58,6 +60,7 @@ function salvarRespostas() {
   camadaDoisDestino.setValue(camadaDoisOrigem.getValue());
   camadaTresDestino.setValue(camadaTresOrigem.getValue());
   novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
+  dataColeta.setValue(data);
 
   // Encontrando a última linha na aba Tabelas Auxiliares
   const linha2 = auxiliares.getRange(1, 15).getValue();
@@ -75,6 +78,7 @@ function salvarRespostas() {
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
   
+  // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
 
