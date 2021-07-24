@@ -67,8 +67,10 @@ function salvarRespostas() {
   const textLastRow = textoSheet.getLastRow();
   const perguntas = [[pergunta1.getValue()], [pergunta2.getValue()], [pergunta3.getValue()], [pergunta4.getValue()]];
   const respostasPerguntas = [[conceitoCausaOrigem.getValue()], [camadaUmOrigem.getValue()], [camadaDoisOrigem.getValue()], [camadaTresOrigem.getValue()]];
+  const dataList = [[data], [data], [data], [data]]
   textoSheet.getRange(textLastRow+1, 1, 4, 1).setValues(perguntas);
   textoSheet.getRange(textLastRow+1, 2, 4, 1).setValues(respostasPerguntas);
+  textoSheet.getRange(textLastRow+1, 3, 4, 1).setValues(dataList);
 
   // Encontrando a última linha na aba Tabelas Auxiliares
   const linha2 = auxiliares.getRange(1, 15).getValue();
