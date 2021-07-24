@@ -4,6 +4,7 @@ function salvarRespostas() {
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Tabelas Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const textoSheet = SpreadsheetApp.getActive().getSheetByName("Texto");
+  const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
   // Definindo as variáveis origem
   const conceitoCausaOrigem = formulario.getRange(9, 29);
@@ -53,6 +54,10 @@ function salvarRespostas() {
   const camadaTresDestino = respostas.getRange(linha1, 6);
   const dataColeta = respostas.getRange(linha1, 13);
   const novoConceitoEfeitoDestino = auxiliares.getRange(2, 2);
+  const dataMce = relatorio.getRange(9, 8);
+  const dataEA = relatorio.getRange(29, 8);
+  const dataTP = relatorio.getRange(45, 8);
+
   
   // Inserindo os valores
   conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
@@ -62,6 +67,9 @@ function salvarRespostas() {
   camadaTresDestino.setValue(camadaTresOrigem.getValue());
   novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
   dataColeta.setValue(data);
+  dataMce.setValue(data);
+  dataEA.setValue(data);
+  dataTP.setValue(data);
 
   // Inserindo valores textuais
   const textLastRow = textoSheet.getLastRow();
