@@ -55,8 +55,8 @@ function salvarRespostas() {
   const dataColeta = respostas.getRange(linha1, 13);
   const novoConceitoEfeitoDestino = auxiliares.getRange(2, 2);
   const dataMce = relatorio.getRange(9, 8);
-  const dataEA = relatorio.getRange(29, 8);
-  const dataTP = relatorio.getRange(45, 8);
+  const dataEA = relatorio.getRange(25, 8);
+  const dataTP = relatorio.getRange(41, 8);
 
   
   // Inserindo os valores
