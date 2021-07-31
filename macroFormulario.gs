@@ -73,12 +73,15 @@ function salvarRespostas() {
 
   // Inserindo valores textuais
   const textLastRow = textoSheet.getLastRow();
-  const perguntas = [[pergunta1.getValue()], [pergunta2.getValue()], [pergunta3.getValue()], [pergunta4.getValue()]];
-  const respostasPerguntas = [[conceitoCausaOrigem.getValue()], [camadaUmOrigem.getValue()], [camadaDoisOrigem.getValue()], [camadaTresOrigem.getValue()]];
-  const dataList = [[data], [data], [data], [data]]
-  textoSheet.getRange(textLastRow+1, 1, 4, 1).setValues(perguntas);
-  textoSheet.getRange(textLastRow+1, 2, 4, 1).setValues(respostasPerguntas);
-  textoSheet.getRange(textLastRow+1, 3, 4, 1).setValues(dataList);
+  textoSheet.getRange(textLastRow+1, 1).setValue(pergunta1.getValue());
+  textoSheet.getRange(textLastRow+1, 2).setValue(conceitoCausaOrigem.getValue());
+  textoSheet.getRange(textLastRow+1, 3).setValue(pergunta2.getValue());
+  textoSheet.getRange(textLastRow+1, 4).setValue(camadaUmOrigem.getValue());
+  textoSheet.getRange(textLastRow+1, 5).setValue(pergunta3.getValue());
+  textoSheet.getRange(textLastRow+1, 6).setValue(camadaDoisOrigem.getValue());
+  textoSheet.getRange(textLastRow+1, 7).setValue(pergunta4.getValue());
+  textoSheet.getRange(textLastRow+1, 8).setValue(camadaTresOrigem.getValue());  
+  textoSheet.getRange(textLastRow+1, 9).setValue(data);
 
   // Encontrando a última linha na aba Tabelas Auxiliares
   const linha2 = auxiliares.getRange(1, 15).getValue();
