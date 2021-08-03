@@ -5,6 +5,7 @@ function salvarRespostas() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const textoSheet = SpreadsheetApp.getActive().getSheetByName("Texto");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
+  const eatp = SpreadsheetApp.getActive().getSheetByName("EA-TP");
 
   // Definindo as variáveis origem
   const conceitoCausaOrigem = formulario.getRange(9, 29);
@@ -20,6 +21,9 @@ function salvarRespostas() {
   const pergunta4 = formulario.getRange(12, 4);
   const pergunta5 = formulario.getRange(13, 4);
   const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
+  const logResposta = respostas.getRange(1, 15).getValue();
+  const eaCheck = eatp.getRange(8, 15).getValue();
+  const tpCheck = eatp.getRange(113, 12).getValue();
 
   // Conferindo as respostas
   // Criando os elementos do texto
@@ -98,6 +102,19 @@ function salvarRespostas() {
   camadaDoisOrigem.clearContent();
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
+
+  // Checando a consistência
+  const valuesRange = auxiliares.getRange(2, 11, 1000, 1);
+  if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+  } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).build());
+  }
+  
   
   // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
