@@ -106,13 +106,13 @@ function salvarRespostas() {
   // Checando a consistência
   const valuesRange = auxiliares.getRange(2, 11, 1000, 1);
   if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).build());
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).build());
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).setHelpText("Escolha um dos conceitos da lista.").build());
   }
   
   
