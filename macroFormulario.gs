@@ -24,6 +24,27 @@ function salvarRespostas() {
   const logResposta = respostas.getRange(1, 15).getValue();
   const eaCheck = eatp.getRange(8, 15).getValue();
   const tpCheck = eatp.getRange(113, 12).getValue();
+  const conceitoCausaCheck = auxiliares.getRange(3, 21).getValue();
+
+  // Checando a consistência
+  const valuesRange = auxiliares.getRange(2, 11, 1000, 1);
+  let formsLiberado = false;
+  if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
+    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).build());
+    formsLiberado = true;
+  }
+
+  if(conceitoCausaCheck == "Repetir" && formsLiberado == false){
+    SpreadsheetApp.getUi().alert("Atenção!", "Você deve escolher uma resposta diferente para a primeira pergunta. Este conceito já foi utilizado.", SpreadsheetApp.getUi().ButtonSet.OK);
+    return
+  }
+
 
   // Conferindo as respostas
   // Criando os elementos do texto
@@ -102,18 +123,6 @@ function salvarRespostas() {
   camadaDoisOrigem.clearContent();
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
-
-  // Checando a consistência
-  const valuesRange = auxiliares.getRange(2, 11, 1000, 1);
-  if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).setHelpText("Escolha um dos conceitos da lista.").build());
-  }
   
   
   // Log de confirmação
