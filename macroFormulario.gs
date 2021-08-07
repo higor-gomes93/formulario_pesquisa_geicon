@@ -27,16 +27,16 @@ function salvarRespostas() {
   const conceitoCausaCheck = auxiliares.getRange(3, 21).getValue();
 
   // Checando a consistência
-  const valuesRange = auxiliares.getRange(2, 11, 1000, 1);
+  const valuesRange = auxiliares.getRange(4, 18, 1000, 1);
   let formsLiberado = false;
   if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
-    formulario.getRange(13, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).build());
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireFormulaSatisfied('=NÚM.CARACT(AC9)<25').setAllowInvalid(false).setHelpText('Utilize menos de 25 caracteres.').build());
     formsLiberado = true;
   }
 
@@ -44,6 +44,12 @@ function salvarRespostas() {
     SpreadsheetApp.getUi().alert("Atenção!", "Você deve escolher uma resposta diferente para a primeira pergunta. Este conceito já foi utilizado.", SpreadsheetApp.getUi().ButtonSet.OK);
     return
   }
+
+  if(novoConceitoEfeitoOrigem.getValue().toString().length > 25){
+    SpreadsheetApp.getUi().alert("Atenção!", "Você deve inserir um conceito com menos de 25 caracteres.", SpreadsheetApp.getUi().ButtonSet.OK);
+    return
+  }
+
 
 
   // Conferindo as respostas
