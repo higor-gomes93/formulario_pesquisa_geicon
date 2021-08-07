@@ -32,6 +32,11 @@ function salvarRespostas() {
     return
   }
 
+  if(conceitoCausaOrigem.getValue().toString().length > 25){
+    SpreadsheetApp.getUi().alert("Atenção!", "Você deve inserir um conceito com menos de 25 caracteres.", SpreadsheetApp.getUi().ButtonSet.OK);
+    return
+  }
+
   // Conferindo as respostas
   // Criando os elementos do texto
   let elementos = [];
@@ -66,8 +71,8 @@ function salvarRespostas() {
   const dataColeta = respostas.getRange(linha1, 13);
   const novoConceitoEfeitoDestino = auxiliares.getRange(2, 2);
   const dataMce = relatorio.getRange(9, 8);
-  const dataEA = relatorio.getRange(25, 8);
-  const dataTP = relatorio.getRange(45, 8);
+  const dataEA = relatorio.getRange(39, 8);
+  const dataTP = relatorio.getRange(59, 8);
   
   // Inserindo valores textuais
   const textLastRow = textoSheet.getLastRow();
@@ -121,13 +126,12 @@ function salvarRespostas() {
   } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
     formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
-    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireFormulaSatisfied('=NÚM.CARACT(AC9)<25').setAllowInvalid(false).setHelpText('Utilize menos de 25 caracteres.').build());
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(true).setHelpText("Escolha um dos conceitos da lista.").build());
   }
  
   // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
-
 
 function relatorio() {
   const check = SpreadsheetApp.getActive().getSheetByName('Formulário').getRange(16, 36).getValue();
