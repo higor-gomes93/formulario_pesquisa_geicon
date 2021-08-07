@@ -69,18 +69,6 @@ function salvarRespostas() {
   const dataEA = relatorio.getRange(25, 8);
   const dataTP = relatorio.getRange(45, 8);
   
-  // Inserindo os valores
-  conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
-  conceitoEfeitoDestino.setValue(conceitoEfeitoOrigem.getValue());
-  camadaUmDestino.setValue(camadaUmOrigem.getValue());
-  camadaDoisDestino.setValue(camadaDoisOrigem.getValue());
-  camadaTresDestino.setValue(camadaTresOrigem.getValue());
-  novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
-  dataColeta.setValue(data);
-  dataMce.setValue(data);
-  dataEA.setValue(data);
-  dataTP.setValue(data);
-
   // Inserindo valores textuais
   const textLastRow = textoSheet.getLastRow();
   textoSheet.getRange(textLastRow+1, 1).setValue(pergunta1.getValue());
@@ -93,8 +81,20 @@ function salvarRespostas() {
   textoSheet.getRange(textLastRow+1, 8).setValue(camadaTresOrigem.getValue());  
   textoSheet.getRange(textLastRow+1, 9).setValue(data);
   textoSheet.getRange(textLastRow+1, 10).setValue(agente);
-  textoSheet.getRange(textLastRow+1, 10).setValue(ambiente);
+  textoSheet.getRange(textLastRow+1, 11).setValue(ambiente);
+  textoSheet.getRange(textLastRow+1, 12).setValue(conceitoEfeitoOrigem);
 
+  // Inserindo os valores
+  conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
+  conceitoEfeitoDestino.setValue(conceitoEfeitoOrigem.getValue());
+  camadaUmDestino.setValue(camadaUmOrigem.getValue());
+  camadaDoisDestino.setValue(camadaDoisOrigem.getValue());
+  camadaTresDestino.setValue(camadaTresOrigem.getValue());
+  novoConceitoEfeitoDestino.setValue(novoConceitoEfeitoOrigem.getValue());
+  dataColeta.setValue(data);
+  dataMce.setValue(data);
+  dataEA.setValue(data);
+  dataTP.setValue(data);
 
   // Encontrando a última linha na aba Tabelas Auxiliares
   const linha2 = auxiliares.getRange(1, 15).getValue();
