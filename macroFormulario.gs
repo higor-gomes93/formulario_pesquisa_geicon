@@ -24,6 +24,8 @@ function salvarRespostas() {
   const logResposta = respostas.getRange(1, 15).getValue();
   const eaCheck = eatp.getRange(8, 15).getValue();
   const tpCheck = eatp.getRange(113, 12).getValue();
+  const ambiente = auxiliares.getRange(4, 2).getValue();
+  const agente = auxiliares.getRange(5, 2).getValue();
 
   if(novoConceitoEfeitoOrigem.getValue().toString().length > 25){
     SpreadsheetApp.getUi().alert("Atenção!", "Você deve inserir um conceito com menos de 25 caracteres.", SpreadsheetApp.getUi().ButtonSet.OK);
@@ -66,7 +68,6 @@ function salvarRespostas() {
   const dataMce = relatorio.getRange(9, 8);
   const dataEA = relatorio.getRange(25, 8);
   const dataTP = relatorio.getRange(45, 8);
-
   
   // Inserindo os valores
   conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
@@ -91,6 +92,9 @@ function salvarRespostas() {
   textoSheet.getRange(textLastRow+1, 7).setValue(pergunta4.getValue());
   textoSheet.getRange(textLastRow+1, 8).setValue(camadaTresOrigem.getValue());  
   textoSheet.getRange(textLastRow+1, 9).setValue(data);
+  textoSheet.getRange(textLastRow+1, 10).setValue(agente);
+  textoSheet.getRange(textLastRow+1, 10).setValue(ambiente);
+
 
   // Encontrando a última linha na aba Tabelas Auxiliares
   const linha2 = auxiliares.getRange(1, 15).getValue();
@@ -122,4 +126,13 @@ function salvarRespostas() {
  
   // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
+}
+
+
+function relatorio() {
+  const check = SpreadsheetApp.getActive().getSheetByName('Formulário').getRange(16, 36).getValue();
+  const abaRelatorio = SpreadsheetApp.getActive().getSheetByName('Relatório');
+  if (check == 'Relatório'){
+    abaRelatorio.activate();
+  }
 }
