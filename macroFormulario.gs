@@ -130,6 +130,17 @@ function salvarRespostas() {
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
   
+  // Double check
+  if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
+    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireFormulaSatisfied('=NÚM.CARACT(AC9)<25').setAllowInvalid(false).setHelpText('Utilize menos de 25 caracteres.').build());
+    formsLiberado = true;
+  }
   
   // Log de confirmação
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
