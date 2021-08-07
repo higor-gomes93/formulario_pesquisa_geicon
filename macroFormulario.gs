@@ -26,31 +26,10 @@ function salvarRespostas() {
   const tpCheck = eatp.getRange(113, 12).getValue();
   const conceitoCausaCheck = auxiliares.getRange(3, 21).getValue();
 
-  // Checando a consistência
-  const valuesRange = auxiliares.getRange(4, 18, 1000, 1);
-  let formsLiberado = false;
-  if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
-    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
-    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Concluído"){
-    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-  } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
-    formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireFormulaSatisfied('=NÚM.CARACT(AC9)<25').setAllowInvalid(false).setHelpText('Utilize menos de 25 caracteres.').build());
-    formsLiberado = true;
-  }
-
-  if(conceitoCausaCheck == "Repetir" && formsLiberado == false){
-    SpreadsheetApp.getUi().alert("Atenção!", "Você deve escolher uma resposta diferente para a primeira pergunta. Este conceito já foi utilizado.", SpreadsheetApp.getUi().ButtonSet.OK);
-    return
-  }
-
   if(novoConceitoEfeitoOrigem.getValue().toString().length > 25){
     SpreadsheetApp.getUi().alert("Atenção!", "Você deve inserir um conceito com menos de 25 caracteres.", SpreadsheetApp.getUi().ButtonSet.OK);
     return
   }
-
-
 
   // Conferindo as respostas
   // Criando os elementos do texto
@@ -130,7 +109,8 @@ function salvarRespostas() {
   camadaTresOrigem.clearContent();
   novoConceitoEfeitoOrigem.clearContent();
   
-  // Double check
+  // Checando a coerência
+  const valuesRange = auxiliares.getRange(4, 18, 1000, 1);
   if(logResposta >= 5 && eaCheck == "Pendente" && tpCheck == "Pendente"){
     formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Pendente"){
@@ -139,7 +119,6 @@ function salvarRespostas() {
     formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(valuesRange).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(logResposta >= 5 && eaCheck == "Concluído" && tpCheck == "Concluído"){
     formulario.getRange(9, 29).setDataValidation(SpreadsheetApp.newDataValidation().requireFormulaSatisfied('=NÚM.CARACT(AC9)<25').setAllowInvalid(false).setHelpText('Utilize menos de 25 caracteres.').build());
-    formsLiberado = true;
   }
   
   // Log de confirmação
