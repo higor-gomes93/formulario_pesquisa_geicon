@@ -75,7 +75,7 @@ function salvarRespostas() {
   const dataTP = relatorio.getRange(59, 8);
   
   // Inserindo valores textuais
-  const textLastRow = textoSheet.getLastRow();
+  const textLastRow = textoSheet.getRange(1, 13).getValue();
   textoSheet.getRange(textLastRow+1, 1).setValue(pergunta1.getValue());
   textoSheet.getRange(textLastRow+1, 2).setValue(conceitoCausaOrigem.getValue());
   textoSheet.getRange(textLastRow+1, 3).setValue(pergunta2.getValue());
