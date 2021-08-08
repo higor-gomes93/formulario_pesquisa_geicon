@@ -87,7 +87,7 @@ function salvarRespostas() {
   textoSheet.getRange(textLastRow+1, 9).setValue(data);
   textoSheet.getRange(textLastRow+1, 10).setValue(agente);
   textoSheet.getRange(textLastRow+1, 11).setValue(ambiente);
-  textoSheet.getRange(textLastRow+1, 12).setValue(conceitoEfeitoOrigem);
+  textoSheet.getRange(textLastRow+1, 12).setValue(conceitoEfeitoOrigem.getValue());
 
   // Inserindo os valores
   conceitoCausaDestino.setValue(conceitoCausaOrigem2.getDisplayValue());
