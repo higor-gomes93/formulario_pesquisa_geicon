@@ -133,6 +133,7 @@ function salvarRespostas() {
   SpreadsheetApp.getUi().alert("Concluído!", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
 
+
 function relatorio() {
   const check = SpreadsheetApp.getActive().getSheetByName('Formulário').getRange(16, 36).getValue();
   const abaRelatorio = SpreadsheetApp.getActive().getSheetByName('Relatório');
