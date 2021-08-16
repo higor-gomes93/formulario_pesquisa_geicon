@@ -76,7 +76,7 @@ function registroDados(data, names) {
   mainSheet.getRange(mainstartRow+1, mainstartColumn, mainendRow, 1).setValue(names);
 }
 
-// Rodando as funções
+// Rodando as funções para coleta de todas as respotas
 function coletorRespostas() {
   // Coletando as pastas
   const folders = coletorPastas();
