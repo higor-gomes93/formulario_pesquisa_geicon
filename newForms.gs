@@ -44,14 +44,29 @@ function inicioElicitacao() {
   formulario.getRange(10, 4).setValue(proxIter);
   formulario.getRange(11, 5, 13, 1).clear();
   if(proxIter == "Incluir um novo conceito"){
+    // Copiando e colando os campos
     camposIncluir.copyTo(formulario.getRange(11, 5, 11, 1));
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
-    SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(11, 5)]).build();
-    SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setRanges([formulario.getRange(13, 5, 2, 1)]).build();
-    SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(15, 5, 2, 1)]).build();
-    SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(18, 5, 4, 1)]).build();
+    // Criando as formatações condicionais
+    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
+    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(11, 5)]).build();
+    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setRanges([formulario.getRange(13, 5, 2, 1)]).build();
+    const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(15, 5, 2, 1)]).build();
+    const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(18, 5, 4, 1)]).build();
+    // Criando o vetor de formatações
+    const rules = formulario.getConditionalFormatRules();
+    rules.push(rule1);
+    rules.push(rule2);
+    rules.push(rule3);
+    rules.push(rule4);
+    rules.push(rule5);
+    // Inserindo as formatações
+    formulario.setConditionalFormatRules(rules);
   } else if(proxIter == "Apenas conectar conceitos"){
     camposLigar.copyTo(formulario.getRange(11, 5, 5, 1));
   }
 
 }
+
+
+
+
