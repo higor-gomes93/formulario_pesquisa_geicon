@@ -47,11 +47,11 @@ function inicioElicitacao() {
     // Copiando e colando os campos
     camposIncluir.copyTo(formulario.getRange(11, 5, 11, 1));
     // Criando as formatações condicionais
-    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
-    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(11, 5)]).build();
-    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setRanges([formulario.getRange(13, 5, 2, 1)]).build();
-    const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(15, 5, 2, 1)]).build();
-    const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setRanges([formulario.getRange(18, 5, 4, 1)]).build();
+    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
+    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(11, 5)]).build();
+    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setBackground('#fff2cc').setRanges([formulario.getRange(13, 5, 2, 1)]).build();
+    const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(15, 5, 2, 1)]).build();
+    const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(18, 5, 4, 1)]).build();
     // Criando o vetor de formatações
     const rules = formulario.getConditionalFormatRules();
     rules.push(rule1);
@@ -66,7 +66,3 @@ function inicioElicitacao() {
   }
 
 }
-
-
-
-
