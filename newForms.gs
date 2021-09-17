@@ -61,6 +61,8 @@ function inicioElicitacao() {
     rules.push(rule5);
     // Inserindo as formatações
     formulario.setConditionalFormatRules(rules);
+    // Inserindo a formatação de dados
+    formulario.getRange(18, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(proxIter == "Apenas conectar conceitos"){
     camposLigar.copyTo(formulario.getRange(11, 5, 5, 1));
   }
