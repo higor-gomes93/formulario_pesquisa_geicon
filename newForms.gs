@@ -3,6 +3,7 @@ function inicioElicitacao() {
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
+  const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(13,10).getValue();
@@ -11,6 +12,10 @@ function inicioElicitacao() {
   const posicaoDois = auxiliares.getRange(14,15).getValue();
   const tipoUm = auxiliares.getRange(13,11).getValue();
   const sinal = auxiliares.getRange(15,13).getValue();
+  const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
+  const dataMce = relatorio.getRange(9, 8);
+  const dataEA = relatorio.getRange(24, 8);
+  const dataTP = relatorio.getRange(44, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -19,6 +24,7 @@ function inicioElicitacao() {
   const posicaoCC = respostas.getRange(lastRow, 3);
   const posicaoCE = respostas.getRange(lastRow, 5);
   const posicaoSinal = respostas.getRange(lastRow, 10);
+  const posicaoData = respostas.getRange(lastRow, 11);
   
   // Inserindo os conceitos
   if(tipoUm == "Efeito"){
@@ -27,12 +33,20 @@ function inicioElicitacao() {
     posicaoCC.setValue(posicaoUm);
     posicaoCE.setValue(posicaoDois);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else if(tipoUm == "Causa"){
     conceitoCC.setValue(conceitoDois);
     conceitoCE.setValue(conceitoUm);
     posicaoCC.setValue(posicaoDois);
     posicaoCE.setValue(posicaoUm);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else {
     console.log("Erro");
   }
@@ -95,6 +109,7 @@ function incluirConceito() {
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
+  const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
   
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(30,10).getValue();
@@ -103,6 +118,10 @@ function incluirConceito() {
   const posicaoDois = auxiliares.getRange(31,15).getValue();
   const tipoUm = auxiliares.getRange(30,11).getValue();
   const sinal = auxiliares.getRange(31,13).getValue();
+  const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
+  const dataMce = relatorio.getRange(9, 8);
+  const dataEA = relatorio.getRange(24, 8);
+  const dataTP = relatorio.getRange(44, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -111,6 +130,7 @@ function incluirConceito() {
   const posicaoCC = respostas.getRange(lastRow, 3);
   const posicaoCE = respostas.getRange(lastRow, 5);
   const posicaoSinal = respostas.getRange(lastRow, 10);
+  const posicaoData = respostas.getRange(lastRow, 11);
   
   // Inserindo os conceitos
   if(tipoUm == "Efeito"){
@@ -119,12 +139,20 @@ function incluirConceito() {
     posicaoCC.setValue(posicaoUm);
     posicaoCE.setValue(posicaoDois);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else if(tipoUm == "Causa"){
     conceitoCC.setValue(conceitoDois);
     conceitoCE.setValue(conceitoUm);
     posicaoCC.setValue(posicaoDois);
     posicaoCE.setValue(posicaoUm);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else {
     console.log("Erro");
   }
@@ -188,7 +216,8 @@ function ligarConceitos() {
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
-  
+  const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
+
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(40,10).getValue();
   const conceitoDois = auxiliares.getRange(41,10).getValue();
@@ -196,6 +225,10 @@ function ligarConceitos() {
   const posicaoDois = auxiliares.getRange(41,14).getValue();
   const tipoUm = auxiliares.getRange(40,11).getValue();
   const sinal = auxiliares.getRange(40,13).getValue();
+  const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
+  const dataMce = relatorio.getRange(9, 8);
+  const dataEA = relatorio.getRange(24, 8);
+  const dataTP = relatorio.getRange(44, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -204,7 +237,8 @@ function ligarConceitos() {
   const posicaoCC = respostas.getRange(lastRow, 3);
   const posicaoCE = respostas.getRange(lastRow, 5);
   const posicaoSinal = respostas.getRange(lastRow, 10);
-  
+  const posicaoData = respostas.getRange(lastRow, 11);
+
   // Inserindo os conceitos
   if(tipoUm == "Efeito"){
     conceitoCC.setValue(conceitoUm);
@@ -212,12 +246,20 @@ function ligarConceitos() {
     posicaoCC.setValue(posicaoUm);
     posicaoCE.setValue(posicaoDois);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else if(tipoUm == "Causa"){
     conceitoCC.setValue(conceitoDois);
     conceitoCE.setValue(conceitoUm);
     posicaoCC.setValue(posicaoDois);
     posicaoCE.setValue(posicaoUm);
     posicaoSinal.setValue(sinal);
+    posicaoData.setValue(data);
+    dataMce.setValue(data);
+    dataEA.setValue(data);
+    dataTP.setValue(data);
   } else {
     console.log("Erro");
   }
