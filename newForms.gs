@@ -34,24 +34,24 @@ function inicioElicitacao() {
   }
 
   // Coletando o tipo da próxima iteração
-  const proxIter = formulario.getRange(20,5).getValue();
+  const proxIter = formulario.getRange(21,5).getValue();
 
   // Definindo os estilos da próxima iteração
   const camposIncluir = auxiliares.getRange(2, 19, 11, 1);
   const camposLigar = auxiliares.getRange(2, 20, 5, 1);
 
   // Ajustando para a próxima iteração
-  formulario.getRange(10, 4).setValue(proxIter);
-  formulario.getRange(11, 5, 13, 1).clear();
+  formulario.getRange(11, 4).setValue(proxIter);
+  formulario.getRange(12, 5, 13, 1).clear();
   if(proxIter == "Incluir um novo conceito"){
     // Copiando e colando os campos
-    camposIncluir.copyTo(formulario.getRange(11, 5, 11, 1));
+    camposIncluir.copyTo(formulario.getRange(12, 5, 11, 1));
     // Criando as formatações condicionais
-    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
-    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(11, 5)]).build();
-    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setBackground('#fff2cc').setRanges([formulario.getRange(13, 5, 2, 1)]).build();
-    const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(15, 5, 2, 1)]).build();
-    const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(18, 5, 4, 1)]).build();
+    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(12, 4, 13, 2)]).build();
+    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(12, 5)]).build();
+    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setBackground('#fff2cc').setRanges([formulario.getRange(14, 5, 2, 1)]).build();
+    const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(16, 5, 2, 1)]).build();
+    const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(19, 5, 4, 1)]).build();
     // Criando o vetor de formatações
     const rules = formulario.getConditionalFormatRules();
     rules.push(rule1);
@@ -62,14 +62,14 @@ function inicioElicitacao() {
     // Inserindo as formatações
     formulario.setConditionalFormatRules(rules);
     // Inserindo a formatação de dados
-    formulario.getRange(18, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(19, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(proxIter == "Apenas conectar conceitos"){
-    formulario.getRange(11, 5, 13, 1).clearDataValidations();
+    formulario.getRange(12, 5, 13, 1).clearDataValidations();
     // Copiando e colando os campos
-    camposLigar.copyTo(formulario.getRange(11, 5, 5, 1));
+    camposLigar.copyTo(formulario.getRange(12, 5, 5, 1));
     // Criando as formatações condicionais
-    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
-    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(11, 5, 5, 1)]).build();
+    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(12, 4, 13, 2)]).build();
+    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(12, 5, 5, 1)]).build();
     // Criando o vetor de formatações
     const rules = formulario.getConditionalFormatRules();
     rules.push(rule1);
@@ -77,10 +77,8 @@ function inicioElicitacao() {
     // Inserindo as formatações
     formulario.setConditionalFormatRules(rules);
     // Inserindo a formatação de dados
-    formulario.getRange(11, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(12, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-
+    formulario.getRange(13, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     console.log(camposLigar);
   }
-
 }
