@@ -10,6 +10,7 @@ function inicioElicitacao() {
   const posicaoUm = auxiliares.getRange(13,15).getValue();
   const posicaoDois = auxiliares.getRange(14,15).getValue();
   const tipoUm = auxiliares.getRange(13,11).getValue();
+  const sinal = auxiliares.getRange(15,13).getValue();
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -17,6 +18,7 @@ function inicioElicitacao() {
   const conceitoCE = respostas.getRange(lastRow, 4);
   const posicaoCC = respostas.getRange(lastRow, 3);
   const posicaoCE = respostas.getRange(lastRow, 5);
+  const posicaoSinal = respostas.getRange(lastRow, 10);
   
   // Inserindo os conceitos
   if(tipoUm == "Efeito"){
@@ -24,11 +26,13 @@ function inicioElicitacao() {
     conceitoCE.setValue(conceitoDois);
     posicaoCC.setValue(posicaoUm);
     posicaoCE.setValue(posicaoDois);
+    posicaoSinal.setValue(sinal);
   } else if(tipoUm == "Causa"){
     conceitoCC.setValue(conceitoDois);
     conceitoCE.setValue(conceitoUm);
     posicaoCC.setValue(posicaoDois);
     posicaoCE.setValue(posicaoUm);
+    posicaoSinal.setValue(sinal);
   } else {
     console.log("Erro");
   }
