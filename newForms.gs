@@ -49,7 +49,7 @@ function inicioElicitacao() {
     // Criando as formatações condicionais
     const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(12, 4, 13, 2)]).build();
     const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(12, 5)]).build();
-    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$13=FALSE;$E$14=FALSE);TRUE;FALSE)').setBackground('#fff2cc').setRanges([formulario.getRange(14, 5, 2, 1)]).build();
+    const rule3 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF(AND($E$14=FALSE;$E$15=FALSE);TRUE;FALSE)').setBackground('#fff2cc').setRanges([formulario.getRange(14, 5, 2, 1)]).build();
     const rule4 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(16, 5, 2, 1)]).build();
     const rule5 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(19, 5, 4, 1)]).build();
     // Criando o vetor de formatações
