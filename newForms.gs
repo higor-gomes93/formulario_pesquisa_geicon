@@ -63,6 +63,7 @@ function inicioElicitacao() {
     formulario.setConditionalFormatRules(rules);
     // Inserindo a formatação de dados
     formulario.getRange(19, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(12, 5, 13, 1).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
   } else if(proxIter == "Apenas conectar conceitos"){
     formulario.getRange(12, 5, 13, 1).clearDataValidations();
     // Copiando e colando os campos
@@ -79,6 +80,6 @@ function inicioElicitacao() {
     // Inserindo a formatação de dados
     formulario.getRange(12, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(13, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
-    console.log(camposLigar);
+    formulario.getRange(12, 5, 13, 1).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
   }
 }
