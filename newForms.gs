@@ -64,7 +64,23 @@ function inicioElicitacao() {
     // Inserindo a formatação de dados
     formulario.getRange(18, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
   } else if(proxIter == "Apenas conectar conceitos"){
+    formulario.getRange(11, 5, 13, 1).clearDataValidations();
+    // Copiando e colando os campos
     camposLigar.copyTo(formulario.getRange(11, 5, 5, 1));
+    // Criando as formatações condicionais
+    const rule1 = SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied('=IF($D$11:$D$23="";TRUE;FALSE)').setBackground('#ffffff').setRanges([formulario.getRange(11, 4, 13, 2)]).build();
+    const rule2 = SpreadsheetApp.newConditionalFormatRule().whenCellEmpty().setBackground('#fff2cc').setRanges([formulario.getRange(11, 5, 5, 1)]).build();
+    // Criando o vetor de formatações
+    const rules = formulario.getConditionalFormatRules();
+    rules.push(rule1);
+    rules.push(rule2);
+    // Inserindo as formatações
+    formulario.setConditionalFormatRules(rules);
+    // Inserindo a formatação de dados
+    formulario.getRange(11, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+    formulario.getRange(12, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
+
+    console.log(camposLigar);
   }
 
 }
