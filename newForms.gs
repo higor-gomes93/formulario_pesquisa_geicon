@@ -325,4 +325,14 @@ function salvarRespostas() {
   // Identificando o modo
   const modoRodada = formulario.getRange(11, 4).getValue();
   
+  // Rodando a função adequada
+  if (modoRodada == "Início da Elicitação"){
+    inicioElicitacao();
+  } else if (modoRodada == "Incluir um novo conceito"){
+    incluirConceito();
+  } else if (modoRodada == "Apenas conectar conceitos"){
+    ligarConceitos();
+  } else {
+    
+  }
 }
