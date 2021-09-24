@@ -318,3 +318,11 @@ function ligarConceitos() {
   }
 }
 
+function salvarRespostas() {
+  // Definição das abas
+  const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
+
+  // Identificando o modo
+  const modoRodada = formulario.getRange(11, 4).getValue();
+  
+}
