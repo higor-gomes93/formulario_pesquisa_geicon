@@ -5,6 +5,9 @@ function inicioElicitacao() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
+  // Carimbando o core do texto
+  auxiliares.getRange(22, 6).setValue(auxiliares.getRange(17, 25).getValue())
+  
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(13,10).getValue();
   const conceitoDois = auxiliares.getRange(14,10).getValue();
@@ -333,6 +336,5 @@ function salvarRespostas() {
   } else if (modoRodada == "Apenas conectar conceitos"){
     ligarConceitos();
   } else {
-    
   }
 }
