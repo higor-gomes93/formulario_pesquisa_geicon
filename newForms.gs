@@ -7,6 +7,7 @@ function inicioElicitacao() {
 
   // Carimbando o core do texto
   auxiliares.getRange(22, 6).setValue(auxiliares.getRange(17, 25).getValue())
+  formulario.getRange(9, 3).setValue(auxiliares.getRange(20, 18).getValue())
   
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(13,10).getValue();
