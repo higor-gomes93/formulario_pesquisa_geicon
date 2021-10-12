@@ -226,6 +226,10 @@ function incluirConceito() {
       novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + "; "
     }
   }
+
+  // Inserindo na célula correspondente
+  auxiliares.getRange(24, 18).setValue(novoTexto);
+
 }
 
 function ligarConceitos() {
@@ -347,6 +351,9 @@ function ligarConceitos() {
       novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + "; "
     }
   }
+  
+  // Inserindo na célula correspondente
+  auxiliares.getRange(24, 23).setValue(novoTexto);
 }
 
 function salvarRespostas() {
@@ -366,3 +373,4 @@ function salvarRespostas() {
   } else {
   }
 }
+
