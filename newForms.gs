@@ -229,7 +229,6 @@ function incluirConceito() {
 
   // Inserindo na célula correspondente
   auxiliares.getRange(24, 18).setValue(novoTexto);
-
 }
 
 function ligarConceitos() {
@@ -372,6 +371,7 @@ function salvarRespostas() {
     ligarConceitos();
   } else {
   }
+
+  // Alerta na interface
+  SpreadsheetApp.getUi().alert("Concluído", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
-
-
