@@ -213,6 +213,19 @@ function incluirConceito() {
     formulario.getRange(12, 3, 11, 3).setBorder(false, false, false, false, false, false);
     formulario.getRange(12, 3, 5, 3).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
   }
+
+  // Construindo o texto de abertura
+  const logTexto = auxiliares.getRange(22, 7).getValue();
+  const textoBase = auxiliares.getRange(24, 6).getValue();
+  let novoTexto = textoBase + " Além disso: "
+  
+  for(let i = 0; i < logTexto; i++){
+    if (i == logTexto - 1){
+      novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + ". " + "O que mais poderia ser adicionado?"
+    } else {
+      novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + "; "
+    }
+  }
 }
 
 function ligarConceitos() {
@@ -319,6 +332,20 @@ function ligarConceitos() {
     formulario.getRange(13, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 27, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(12, 3, 5, 3).setBorder(false, false, false, false, false, false);
     formulario.getRange(12, 3, 5, 3).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
+  }
+
+
+  // Construindo o texto de abertura
+  const logTexto = auxiliares.getRange(22, 7).getValue();
+  const textoBase = auxiliares.getRange(24, 6).getValue();
+  let novoTexto = textoBase + " Além disso: "
+  
+  for(let i = 0; i < logTexto; i++){
+    if (i == logTexto - 1){
+      novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + ". " + "O que mais poderia ser adicionado?"
+    } else {
+      novoTexto = novoTexto + auxiliares.getRange(26+i, 6).getValue() + "; "
+    }
   }
 }
 
