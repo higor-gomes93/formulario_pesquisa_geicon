@@ -56,7 +56,7 @@ function inicioElicitacao() {
   }
 
   // Coletando o tipo da próxima iteração
-  const proxIter = formulario.getRange(21,5).getValue();
+  const proxIter = "Incluir um novo conceito"
 
   // Definindo os estilos da próxima iteração
   const camposIncluir = auxiliares.getRange(2, 19, 11, 1);
@@ -373,4 +373,5 @@ function salvarRespostas() {
   } else {
   }
 }
+
 
