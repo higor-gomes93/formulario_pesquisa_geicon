@@ -115,6 +115,10 @@ function incluirConceito() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
   
+  // Inserindo o novo Texto Aditivo
+  const logTexto = auxiliares.getRange(22, 7).getValue();
+  auxiliares.getRange(26+logTexto, 6).setValue(auxiliares.getRange(23, 20).getValue());
+
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(30,10).getValue();
   const conceitoDois = auxiliares.getRange(31,10).getValue();
@@ -215,7 +219,6 @@ function incluirConceito() {
   }
 
   // Construindo o texto de abertura
-  const logTexto = auxiliares.getRange(22, 7).getValue();
   const textoBase = auxiliares.getRange(24, 6).getValue();
   let novoTexto = textoBase + " Além disso: "
   
@@ -229,7 +232,10 @@ function incluirConceito() {
 
   // Inserindo na célula correspondente
   auxiliares.getRange(24, 18).setValue(novoTexto);
+
+
 }
+
 
 function ligarConceitos() {
   // Definição das abas
@@ -355,6 +361,7 @@ function ligarConceitos() {
   auxiliares.getRange(24, 23).setValue(novoTexto);
 }
 
+
 function salvarRespostas() {
   // Definição das abas
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
@@ -375,3 +382,5 @@ function salvarRespostas() {
   // Alerta na interface
   SpreadsheetApp.getUi().alert("Concluído", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
+
+
