@@ -116,8 +116,8 @@ function incluirConceito() {
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
   
   // Inserindo o novo Texto Aditivo
-  const logTexto = auxiliares.getRange(22, 7).getValue();
-  auxiliares.getRange(26+logTexto, 6).setValue(auxiliares.getRange(23, 20).getValue());
+  const logTexto1 = auxiliares.getRange(22, 7).getValue();
+  auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 20).getValue());
 
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(30,10).getValue();
@@ -220,6 +220,7 @@ function incluirConceito() {
 
   // Construindo o texto de abertura
   const textoBase = auxiliares.getRange(24, 6).getValue();
+  const logTexto = auxiliares.getRange(22, 7).getValue();
   let novoTexto = textoBase + " Além disso: "
   
   for(let i = 0; i < logTexto; i++){
@@ -245,8 +246,8 @@ function ligarConceitos() {
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
   // Inserindo o novo Texto Aditivo
-  const logTexto = auxiliares.getRange(22, 7).getValue();
-  auxiliares.getRange(26+logTexto, 6).setValue(auxiliares.getRange(23, 25).getValue());
+  const logTexto1 = auxiliares.getRange(22, 7).getValue();
+  auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 20).getValue());
 
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(40,10).getValue();
@@ -350,6 +351,7 @@ function ligarConceitos() {
 
   // Construindo o texto de abertura
   const textoBase = auxiliares.getRange(24, 6).getValue();
+  const logTexto = auxiliares.getRange(22, 7).getValue();
   let novoTexto = textoBase + " Além disso: "
   
   for(let i = 0; i < logTexto; i++){
