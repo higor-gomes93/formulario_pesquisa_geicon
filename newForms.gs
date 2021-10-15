@@ -388,3 +388,8 @@ function salvarRespostas() {
   // Alerta na interface
   SpreadsheetApp.getUi().alert("Concluído", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
 }
+
+
+function acessarRelatorio() {
+  SpreadsheetApp.getActive().getSheetByName("Relatório").activate();
+}
