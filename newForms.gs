@@ -247,7 +247,7 @@ function ligarConceitos() {
 
   // Inserindo o novo Texto Aditivo
   const logTexto1 = auxiliares.getRange(22, 7).getValue();
-  auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 20).getValue());
+  auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 25).getValue());
 
   // Coletando os conceitos
   const conceitoUm = auxiliares.getRange(40,10).getValue();
