@@ -63,7 +63,7 @@ function inicioElicitacao() {
   const camposLigar = auxiliares.getRange(2, 20, 5, 1);
 
   // Ajustando para a próxima iteração
-  formulario.getRange(11, 4).setValue(proxIter);
+  auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
   if(proxIter == "Incluir um novo conceito"){
     // Copiando e colando os campos
@@ -174,7 +174,7 @@ function incluirConceito() {
   const camposLigar = auxiliares.getRange(2, 20, 5, 1);
 
   // Ajustando para a próxima iteração
-  formulario.getRange(11, 4).setValue(proxIter);
+  auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
   if(proxIter == "Incluir um novo conceito"){
     // Copiando e colando os campos
@@ -236,7 +236,6 @@ function incluirConceito() {
   formulario.getRange(9, 3).setValue(auxiliares.getRange(24, 18).getValue());
 
 }
-
 
 function ligarConceitos() {
   // Definição das abas
@@ -304,7 +303,7 @@ function ligarConceitos() {
   const camposLigar = auxiliares.getRange(2, 20, 5, 1);
 
   // Ajustando para a próxima iteração
-  formulario.getRange(11, 4).setValue(proxIter);
+  auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
   if(proxIter == "Incluir um novo conceito"){
     // Copiando e colando os campos
@@ -366,7 +365,6 @@ function ligarConceitos() {
   auxiliares.getRange(24, 23).setValue(novoTexto);
   formulario.getRange(9, 3).setValue(auxiliares.getRange(24, 23).getValue());
 }
-
 
 function salvarRespostas() {
   // Definição das abas
