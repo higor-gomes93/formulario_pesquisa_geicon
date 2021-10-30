@@ -56,7 +56,7 @@ function inicioElicitacao() {
   }
 
   // Coletando o tipo da próxima iteração
-  const proxIter = "Incluir um novo conceito"
+  const proxIter = "Incluindo um novo argumento"
 
   // Definindo os estilos da próxima iteração
   const camposIncluir = auxiliares.getRange(2, 19, 11, 1);
@@ -65,7 +65,7 @@ function inicioElicitacao() {
   // Ajustando para a próxima iteração
   auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
-  if(proxIter == "Incluir um novo conceito"){
+  if(proxIter == "Incluindo um novo argumento"){
     // Copiando e colando os campos
     camposIncluir.copyTo(formulario.getRange(12, 5, 11, 1));
     // Criando as formatações condicionais
@@ -87,7 +87,7 @@ function inicioElicitacao() {
     formulario.getRange(19, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(12, 3, 10, 3).setBorder(false, false, false, false, false, false);
     formulario.getRange(12, 3, 11, 3).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
-  } else if(proxIter == "Apenas conectar conceitos"){
+  } else if(proxIter == "Relacionando argumentos"){
     formulario.getRange(12, 5, 13, 1).clearDataValidations();
     // Copiando e colando os campos
     camposLigar.copyTo(formulario.getRange(12, 5, 5, 1));
@@ -176,7 +176,7 @@ function incluirConceito() {
   // Ajustando para a próxima iteração
   auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
-  if(proxIter == "Incluir um novo conceito"){
+  if(proxIter == "Incluindo um novo argumento"){
     // Copiando e colando os campos
     camposIncluir.copyTo(formulario.getRange(12, 5, 11, 1));
     // Criando as formatações condicionais
@@ -198,7 +198,7 @@ function incluirConceito() {
     formulario.getRange(19, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(12, 3, 11, 3).setBorder(false, false, false, false, false, false);
     formulario.getRange(12, 3, 11, 3).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
-  } else if(proxIter == "Apenas conectar conceitos"){
+  } else if(proxIter == "Relacionando argumentos"){
     formulario.getRange(12, 5, 13, 1).clearDataValidations();
     // Copiando e colando os campos
     camposLigar.copyTo(formulario.getRange(12, 5, 5, 1));
@@ -305,7 +305,7 @@ function ligarConceitos() {
   // Ajustando para a próxima iteração
   auxiliares.getRange(23, 2).setValue(proxIter);
   formulario.getRange(12, 5, 13, 1).clear();
-  if(proxIter == "Incluir um novo conceito"){
+  if(proxIter == "Incluindo um novo argumento"){
     // Copiando e colando os campos
     camposIncluir.copyTo(formulario.getRange(12, 5, 11, 1));
     // Criando as formatações condicionais
@@ -327,7 +327,7 @@ function ligarConceitos() {
     formulario.getRange(19, 5).setDataValidation(SpreadsheetApp.newDataValidation().requireValueInRange(auxiliares.getRange(30, 23, 100, 1)).setAllowInvalid(false).setHelpText("Escolha um dos conceitos da lista.").build());
     formulario.getRange(12, 3, 5, 3).setBorder(false, false, false, false, false, false);
     formulario.getRange(12, 3, 11, 3).setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.DASHED);
-  } else if(proxIter == "Apenas conectar conceitos"){
+  } else if(proxIter == "Relacionando argumentos"){
     formulario.getRange(12, 5, 13, 1).clearDataValidations();
     // Copiando e colando os campos
     camposLigar.copyTo(formulario.getRange(12, 5, 5, 1));
@@ -369,17 +369,32 @@ function ligarConceitos() {
 function salvarRespostas() {
   // Definição das abas
   const formulario = SpreadsheetApp.getActive().getSheetByName("Formulário");
+  const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
 
   // Identificando o modo
-  const modoRodada = formulario.getRange(11, 4).getValue();
+  const modoRodada = auxiliares.getRange(23, 2).getValue();
   
+
+
   // Rodando a função adequada
   if (modoRodada == "Início da Elicitação"){
-    inicioElicitacao();
-  } else if (modoRodada == "Incluir um novo conceito"){
-    incluirConceito();
-  } else if (modoRodada == "Apenas conectar conceitos"){
-    ligarConceitos();
+    if(formulario.getRange(20, 5).getValue() != ""){
+      inicioElicitacao();
+    } else{
+      SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+    }
+  } else if (modoRodada == "Incluindo um novo argumento"){
+    if(formulario.getRange(22,5).getValue()!= ""){
+      incluirConceito();
+    } else{
+      SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+    }
+  } else if (modoRodada == "Relacionando argumentos"){
+    if(formulario.getRange(16,5).getValue() != ""){
+      ligarConceitos();
+    } else{
+      SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+    }
   } else {
   }
 
