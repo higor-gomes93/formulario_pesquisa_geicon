@@ -382,18 +382,21 @@ function salvarRespostas() {
       inicioElicitacao();
     } else{
       SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+      return;
     }
   } else if (modoRodada == "Incluindo um novo argumento"){
     if(formulario.getRange(22,5).getValue()!= ""){
       incluirConceito();
     } else{
       SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+      return;
     }
   } else if (modoRodada == "Relacionando argumentos"){
     if(formulario.getRange(16,5).getValue() != ""){
       ligarConceitos();
     } else{
       SpreadsheetApp.getUi().alert("Atenção!", "Selecione o formato da próxima rodada.", SpreadsheetApp.getUi().ButtonSet.OK);
+      return;
     }
   } else {
   }
