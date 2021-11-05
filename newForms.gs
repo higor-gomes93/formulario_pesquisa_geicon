@@ -373,9 +373,10 @@ function salvarRespostas() {
 
   // Identificando o modo
   const modoRodada = auxiliares.getRange(23, 2).getValue();
+
+  // Identificando se exite formulário disponível
+  const formsDisponivel = formulario.getRange(29, 3).getDisplayValue();
   
-
-
   // Rodando a função adequada
   if (modoRodada == "Início da Elicitação"){
     if(formulario.getRange(20, 5).getValue() != ""){
@@ -403,6 +404,12 @@ function salvarRespostas() {
 
   // Alerta na interface
   SpreadsheetApp.getUi().alert("Concluído", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
+
+  // Checando se o forms está disponível
+  if (formsDisponivel == "Acessar Relatório"){
+    SpreadsheetApp.getUi().alert("Formulário Disponível!", "Já está disponível o seu relatório referente ao Estilo de Aprendizagem e Tipo Psicológico. Caso deseje acessá-lo, basta clicar no link abaixo.", SpreadsheetApp.getUi().ButtonSet.OK);
+  }
+
 }
 
 
