@@ -375,7 +375,7 @@ function salvarRespostas() {
   const modoRodada = auxiliares.getRange(23, 2).getValue();
 
   // Identificando se exite formulário disponível
-  const formsDisponivel = formulario.getRange(29, 3).getDisplayValue();
+  const formsDisponivel = formulario.getRange(29, 3).getValue();
   
   // Rodando a função adequada
   if (modoRodada == "Início da Elicitação"){
