@@ -5,9 +5,6 @@ function inicioElicitacao() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
-  // Capturando o texto
-  auxiliares.getRange(2, 22).setValue(formulario.getRange(9, 3).getValue());
-
   // Carimbando o core do texto
   auxiliares.getRange(22, 6).setValue(auxiliares.getRange(17, 25).getValue())
   formulario.getRange(9, 3).setValue(auxiliares.getRange(20, 18).getValue())
@@ -117,9 +114,6 @@ function incluirConceito() {
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
-  
-  // Capturando o texto
-  auxiliares.getRange(2, 22).setValue(formulario.getRange(9, 3).getValue());
 
   // Inserindo o novo Texto Aditivo
   const logTexto1 = auxiliares.getRange(22, 7).getValue();
@@ -249,9 +243,6 @@ function ligarConceitos() {
   const auxiliares = SpreadsheetApp.getActive().getSheetByName("Auxiliares");
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
-
-  // Capturando o texto
-  auxiliares.getRange(2, 22).setValue(formulario.getRange(9, 3).getValue());
 
   // Inserindo o novo Texto Aditivo
   const logTexto1 = auxiliares.getRange(22, 7).getValue();
@@ -410,6 +401,9 @@ function salvarRespostas() {
     }
   } else {
   }
+
+  // Capturando o texto
+  auxiliares.getRange(2, 22).setValue(formulario.getRange(9, 3).getValue());
 
   // Alerta na interface
   SpreadsheetApp.getUi().alert("Concluído", "Respostas salvas com sucesso.", SpreadsheetApp.getUi().ButtonSet.OK);
