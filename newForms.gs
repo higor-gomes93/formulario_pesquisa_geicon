@@ -5,6 +5,9 @@ function inicioElicitacao() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
+  // Capturando o texto
+  auxiliares.getRange(2, 22).setValue(formulario.getRange(25, 3).getValue());
+
   // Carimbando o core do texto
   auxiliares.getRange(22, 6).setValue(auxiliares.getRange(17, 25).getValue())
   formulario.getRange(9, 3).setValue(auxiliares.getRange(20, 18).getValue())
@@ -18,8 +21,8 @@ function inicioElicitacao() {
   const sinal = auxiliares.getRange(15,13).getValue();
   const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
   const dataMce = relatorio.getRange(9, 8);
-  const dataEA = relatorio.getRange(24, 8);
-  const dataTP = relatorio.getRange(44, 8);
+  const dataEA = relatorio.getRange(35, 8);
+  const dataTP = relatorio.getRange(55, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -115,6 +118,9 @@ function incluirConceito() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
   
+  // Capturando o texto
+  auxiliares.getRange(2, 22).setValue(formulario.getRange(25, 3).getValue());
+
   // Inserindo o novo Texto Aditivo
   const logTexto1 = auxiliares.getRange(22, 7).getValue();
   auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 20).getValue());
@@ -128,8 +134,8 @@ function incluirConceito() {
   const sinal = auxiliares.getRange(31,13).getValue();
   const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
   const dataMce = relatorio.getRange(9, 8);
-  const dataEA = relatorio.getRange(24, 8);
-  const dataTP = relatorio.getRange(44, 8);
+  const dataEA = relatorio.getRange(35, 8);
+  const dataTP = relatorio.getRange(55, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -244,6 +250,9 @@ function ligarConceitos() {
   const respostas = SpreadsheetApp.getActive().getSheetByName("Respostas");
   const relatorio = SpreadsheetApp.getActive().getSheetByName("Relatório");
 
+  // Capturando o texto
+  auxiliares.getRange(2, 22).setValue(formulario.getRange(25, 3).getValue());
+
   // Inserindo o novo Texto Aditivo
   const logTexto1 = auxiliares.getRange(22, 7).getValue();
   auxiliares.getRange(26+logTexto1, 6).setValue(auxiliares.getRange(23, 25).getValue());
@@ -257,8 +266,8 @@ function ligarConceitos() {
   const sinal = auxiliares.getRange(40,13).getValue();
   const data = Utilities.formatDate(new Date(),"GMT-3", "dd/MM/yyyy");
   const dataMce = relatorio.getRange(9, 8);
-  const dataEA = relatorio.getRange(24, 8);
-  const dataTP = relatorio.getRange(44, 8);
+  const dataEA = relatorio.getRange(35, 8);
+  const dataTP = relatorio.getRange(55, 8);
 
   // Encontrando as posições na aba de respostas
   const lastRow = respostas.getRange(1, 14).getValue();
@@ -375,7 +384,7 @@ function salvarRespostas() {
   const modoRodada = auxiliares.getRange(23, 2).getValue();
 
   // Identificando se exite formulário disponível
-  const formsDisponivel = formulario.getRange(29, 3).getValue();
+  const formsDisponivel = formulario.getRange(29, 3).getDisplayValue();
   
   // Rodando a função adequada
   if (modoRodada == "Início da Elicitação"){
@@ -415,4 +424,5 @@ function salvarRespostas() {
 
 function acessarRelatorio() {
   SpreadsheetApp.getActive().getSheetByName("Relatório").activate();
+
 }
